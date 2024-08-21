@@ -35,11 +35,16 @@ function debounce(func, wait = 20, immediate = true) {
         if (callNow) func.apply(context, args);
     };
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.product-card');
 
-// Listen for scroll events
-window.addEventListener('scroll', debounce(handleScroll));
+    // Apply 'visible' class to all product cards immediately after the page loads
+    cards.forEach(card => {
+        card.classList.add('visible');
+    });
+});
 
-// Initial check on page load
+
 window.onload = function () {
     handleScroll();
 };
